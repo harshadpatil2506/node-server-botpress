@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Bot Chat - Local</title>
+  <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    #webchat { height: 100%; width: 100%; }
+  </style>
+</head>
+<body>
+  <div id="webchat"></div>
+  <script>
+    const directLine = window.WebChat.createDirectLine({
+      domain: 'http://localhost:3000/api',
+      token: 'not-used'  // Token is not verified in this setup
+    });
+
+    window.WebChat.renderWebChat(
+      {
+        directLine,
+        userID: 'user_' + Date.now(),
+        username: 'Local User'
+      },
+      document.getElementById('webchat')
+    );
+  </script>
+</body>
+</html>
